@@ -1,0 +1,368 @@
+/* General Styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+/* Header Styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #4a6fa5;
+}
+
+.logo a {
+  color: #4a6fa5;
+}
+
+.header div {
+  display: flex;
+  align-items: center;
+  gap: 1.05rem;
+}
+
+.header a {
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.header a:hover {
+  color: #4a6fa5;
+}
+
+#categories {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+}
+
+/* Head Section Styles */
+.Head {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  margin-bottom: 2rem;
+  border-radius: 30px;
+  margin-top: 50%;
+}
+
+.Head h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.Head h6 {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 2rem;
+  width: auto;
+}
+
+/* Selection Styles */
+.Selection {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.input-selection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.input-selection label {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #555;
+}
+
+.modern-select {
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  font-size: 1rem;
+  min-width: 200px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s;
+}
+
+.modern-select:focus {
+  outline: none;
+  border-color: #4a6fa5;
+  box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.2);
+}
+
+/* Recommendation Button */
+.recommendation-button-container {
+  margin-top: 1rem;
+}
+
+#get-recommendations {
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+  background-color: #4a6fa5;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#get-recommendations:hover {
+  background-color: #3a5a8c;
+}
+
+/* Recommendations Section */
+.recommendations-section {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+}
+
+.spinner-container p {
+  margin-top: 1rem;
+  color: #666;
+}
+
+.recommendations-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Book Card Styles */
+.book-card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.book-number {
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  width: 40px;
+  height: 40px;
+  background-color: #4a6fa5;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  z-index: 1;
+}
+
+.book-card-content {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.book-cover-container {
+  flex: 0 0 120px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.book-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.book-cover-placeholder {
+  color: #999;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+
+.book-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.book-title {
+  font-size: 1.4rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+}
+
+.book-author {
+  font-style: italic;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.book-description {
+  margin-bottom: 1rem;
+  line-height: 1.5;
+  font-size: 0.95rem;
+  max-height: 100px;
+  overflow-y: auto;
+}
+
+.book-meta {
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.book-meta p {
+  margin: 0.3rem 0;
+}
+
+.book-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.stars {
+  color: #ffc107;
+}
+
+.rating-count {
+  color: #666;
+  font-size: 0.85rem;
+}
+
+.book-match {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.book-match h4 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #4a6fa5;
+}
+
+.book-actions {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: auto;
+}
+
+.find-book-btn, .btn-outline-secondary {
+  flex: 1;
+  padding: 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-align: center;
+  text-decoration: none;
+}
+
+.find-book-btn {
+  background-color: #4a6fa5;
+  color: white;
+  border: none;
+}
+
+.find-book-btn:hover {
+  background-color: #3a5a8c;
+}
+
+.btn-outline-secondary {
+  background-color: transparent;
+  color: #4a6fa5;
+  border: 1px solid #4a6fa5;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #f0f4f9;
+}
+
+/* Recommendation Text (for raw text responses) */
+.recommendation-text {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .Selection {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .input-selection {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .modern-select {
+    width: 100%;
+  }
+  
+  .recommendations-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .book-card-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .book-cover-container {
+    width: 100%;
+    max-width: 200px;
+    margin-bottom: 1rem;
+  }
+  
+  .book-details {
+    width: 100%;
+  }
+} 
