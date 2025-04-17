@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NextReads</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <div class="header">
+    <div class="logo"><a style="text-decoration: none;" href="BookStore.html">NextReads</a></div>
+    <div><a style="text-decoration: none;" href="Store.html">Store</a>
+      <select id="categories">
+        <option value="">Categories</option>
+        <option value="fiction">Fiction</option>
+        <option value="non-fiction">Non-Fiction</option>
+        <option value="education">Education</option>
+        <option value="self-help">Self Help</option>
+        <option value="mystery">Mystery</option>
+      </select>
+      <a style="text-decoration: none;" href="AboutUs.html">About Us</a>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <div class="hero-section">
+    <div class="hero-content">
+      <h1>Discover Your Next Favorite Book</h1>
+      <p>AI-powered recommendations tailored to your preferences</p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="Head">
+    <h1>Get Personalized Book Recommendations</h1>
+    <h6>Tell us what you're looking for, and we'll find the perfect books for you</h6>
+    
+    <div class="Selection">
+      <div class="input-selection">
+        <label for="genre">Genre</label>
+        <select id="genre" class="modern-select">
+          <option value="">Select a genre</option>
+          <option value="fiction">Fiction</option>
+          <option value="non-fiction">Non-Fiction</option>
+          <option value="mystery">Mystery</option>
+          <option value="romance">Romance</option>
+          <option value="science-fiction">Science Fiction</option>
+          <option value="fantasy">Fantasy</option>
+          <option value="biography">Biography</option>
+          <option value="self-help">Self Help</option>
+        </select>
+      </div>
+
+      <div class="input-selection">
+        <label for="mood">Current Mood</label>
+        <select id="mood" class="modern-select">
+          <option value="">Select your mood</option>
+          <option value="happy">Happy</option>
+          <option value="sad">Sad</option>
+          <option value="energetic">Energetic</option>
+          <option value="calm">Calm</option>
+          <option value="thoughtful">Thoughtful</option>
+          <option value="adventurous">Adventurous</option>
+        </select>
+      </div>
+
+      <div class="input-selection">
+        <label for="purpose">Reading Purpose</label>
+        <select id="purpose" class="modern-select">
+          <option value="">Select your purpose</option>
+          <option value="entertainment">Entertainment</option>
+          <option value="learning">Learning</option>
+          <option value="inspiration">Inspiration</option>
+          <option value="relaxation">Relaxation</option>
+          <option value="personal-growth">Personal Growth</option>
+        </select>
+      </div>
+    </div>
+
+    <button id="getRecommendations" class="recommend-btn">Get Recommendations</button>
+  </div>
+
+  <!-- Featured Books Section -->
+  <div class="featured-books">
+    <h2>Featured Books</h2>
+    <div class="featured-grid">
+      <!-- Featured books will be dynamically populated here -->
+    </div>
+  </div>
+
+  <!-- Recommendations Section -->
+  <div class="recommendations-section">
+    <h2>Your Personalized Recommendations</h2>
+    <div id="loading-spinner" class="spinner-container d-none">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <p>Finding the perfect books for you...</p>
+    </div>
+    <div id="recommendations-container" class="recommendations-container">
+      <!-- Recommendations will be displayed here -->
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>About NextReads</h4>
+        <p>Your AI-powered book recommendation companion</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="Store.html">Store</a></li>
+          <li><a href="AboutUs.html">About Us</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Connect With Us</h4>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 NextReads. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Include the JavaScript files -->
+  <script src="featured-books.js"></script>
+  <script src="recommend.js"></script>
+  <script>
+    // Wait for both DOM and script to be fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize the recommendation system
+      initializeRecommendationSystem();
+    });
+
+    function initializeRecommendationSystem() {
+      console.log('Initializing recommendation system...');
+      
+      // Check if the script loaded successfully
+      if (typeof getBookRecommendations === 'undefined' || typeof displayBookRecommendations === 'undefined') {
+        console.error('recommend.js did not load properly. Functions are not available.');
+        document.getElementById('recommendations-container').innerHTML = 
+          '<div class="alert alert-danger">Error: The recommendation system failed to load. Please refresh the page or try again later.</div>';
+        return;
+      }
+      
+      console.log('recommend.js loaded successfully, functions are available');
+      
+      // Add event listener to the recommendation button
+      const recommendationButton = document.getElementById('getRecommendations');
+      if (recommendationButton) {
+        recommendationButton.addEventListener('click', handleRecommendationRequest);
+      } else {
+        console.error('Recommendation button not found in the DOM');
+      }
+
+      // Add event listener to categories dropdown
+      const categoriesDropdown = document.getElementById('categories');
+      if (categoriesDropdown) {
+        categoriesDropdown.addEventListener('change', handleCategoryChange);
+      }
+    }
+
+    async function handleRecommendationRequest() {
+      const genre = document.getElementById('genre').value;
+      const mood = document.getElementById('mood').value;
+      const purpose = document.getElementById('purpose').value;
+      
+      console.log('Getting recommendations for:', { genre, mood, purpose });
+      
+      // Show loading spinner
+      const loadingSpinner = document.getElementById('loading-spinner');
+      const recommendationsContainer = document.getElementById('recommendations-container');
+      
+      loadingSpinner.classList.remove('d-none');
+      recommendationsContainer.innerHTML = '';
+      
+      try {
+        // Get recommendations from the API
+        console.log('Calling getBookRecommendations function');
+        const recommendations = await getBookRecommendations(genre, mood, purpose);
+        console.log('Received recommendations:', recommendations);
+        
+        // Hide loading spinner
+        loadingSpinner.classList.add('d-none');
+        
+        // Display the recommendations
+        displayBookRecommendations(recommendations);
+      } catch (error) {
+        console.error('Error getting recommendations:', error);
+        loadingSpinner.classList.add('d-none');
+        recommendationsContainer.innerHTML = 
+          `<div class="alert alert-danger">
+            <h4>Failed to get recommendations</h4>
+            <p>${error.message}</p>
+            <p>Please try again with different preferences or check your internet connection.</p>
+          </div>`;
+      }
+    }
+
+    function handleCategoryChange() {
+      const selectedCategory = this.value;
+      if (selectedCategory) {
+        // Redirect to the Store page with the selected category
+        window.location.href = `Store.html?category=${encodeURIComponent(selectedCategory)}`;
+      }
+    }
+  </script>
+</body>
+</html>
