@@ -1,7 +1,6 @@
-# <h1>Next-Reads</h1>
 # 📚 NextReads - AI-Powered Book Recommendation System
 
-<h1>NextReads</h1>
+
 
 ## 🌟 Overview
 
